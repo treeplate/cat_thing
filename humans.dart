@@ -63,6 +63,6 @@ class Human {
 class _DeadHuman extends _Human {
   _DeadHuman(_Human old): super(old.firstName, old.lastName, old.parents);
   bool owns(Cat cat) {
-    throw "$fullName is dead, so does not own ${cat.name}. You may have called the Cat.owner getter, the Cat.fullName getter, Cat.toString, Cat.scratch, or Human.owns (if you did something else, )";
+    throw "$fullName is dead, so does not own ${cat.name}. You may have called the Cat.owner getter, the Cat.fullName getter, Cat.toString, Cat.scratch, or Human.owns after $fullName died (if you did something else, report it at https://github.com/treeplate/cat_thing/issues)";
   }
 }
