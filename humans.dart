@@ -11,11 +11,12 @@ class _Human {
 
   String lastName;
   
-  int health = 10;
+  int _health = 10;
+  int get health => _health;
 
   void notifyScratch(Human owner) {
-    health--;
-    if(health <= 0) {
+    _health--;
+    if(_health <= 0) {
       print("$this died.");
       owner._dispose();
     }
@@ -64,5 +65,14 @@ class _DeadHuman extends _Human {
   _DeadHuman(_Human old): super(old.firstName, old.lastName, old.parents);
   bool owns(Cat cat) {
     throw "$fullName is dead, so does not own ${cat.name}. You may have called the Cat.owner getter, the Cat.fullName getter, Cat.toString, Cat.scratch, or Human.owns after $fullName died (if you did something else, report it at https://github.com/treeplate/cat_thing/issues)";
+  }
+  
+  int get health => 0;
+  void notifyScratch(Human owner) {}
+  void assign(Cat cat, Human owner) {
+    throw "$fullName is dead, so cannot be assigned to $cat.";
+  }
+  Human makeBaby(Human owner, Human withy, {String named = "Baby"}) {
+    throw "$fullName is dead, so can not make a baby.";
   }
 }
